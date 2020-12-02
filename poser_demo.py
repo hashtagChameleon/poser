@@ -1,7 +1,7 @@
 from posenet_demo import Posenet
 
-posenet_model = '/content/drive/My\ Drive/Raven/3DMPPE/snapshot_24.pth.tar'
-rootnet_model = '/content/drive/My\ Drive/Raven/3DMPPE/snapshot_18.pth.tar'
+posenet_model = '/content/drive/My Drive/Raven/3DMPPE/snapshot_24.pth.tar'
+rootnet_model = '/content/drive/My Drive/Raven/3DMPPE/snapshot_18.pth.tar'
 
 bbox_list = [
 [162.12181091308594, 86.23428344726562, 203.85377502441406, 255.6412353515625],\
