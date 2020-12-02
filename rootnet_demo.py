@@ -20,7 +20,7 @@ from dataset import generate_patch_image
 
 class Rootnet():
     def __init__(self, model_path, gpu_ids = '0'):
-        cfg.set_args(args.gpu_ids)
+        cfg.set_args(gpu_ids)
         cudnn.benchmark = True
 
         assert osp.exists(model_path), 'Cannot find model at ' + model_path
