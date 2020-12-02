@@ -24,7 +24,7 @@ class Rootnet():
         cudnn.benchmark = True
 
         assert osp.exists(model_path), 'Cannot find model at ' + model_path
-        print(f'Loading Rootnet model {model_path}'))
+        print(f'Loading Rootnet model {model_path}')
         self.model = DataParallel(get_pose_net(cfg, False)).cuda()
         ckpt = torch.load(model_path)
         self.model.load_state_dict(ckpt['network'])
