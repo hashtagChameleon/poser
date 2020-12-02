@@ -4,6 +4,7 @@ from functools import singledispatch
 from datetime import datetime
 
 from posenet_demo import Posenet
+from rootnet_demo import Rootnet
 
 joints_name2 = ('Head_top', 'Thorax', 'rightShoulder', 'rightElbow', 'rightWrist', 'leftShoulder', 'leftElbow', 'leftWrist', 'rightHip', 'rightKnee', 'rightAnkle', 'leftHip', 'leftKnee', 'leftAnkle', 'Pelvis', 'Spine', 'nose', 'R_Hand', 'L_Hand', 'R_Toe', 'L_Toe')
 
@@ -26,13 +27,14 @@ bbox_list = [
 [0.7226638793945312, 44.89130401611328, 85.53158569335938, 221.61691284179688]]
 root_depth_list = [11250.5732421875, 15522.8701171875, 11831.3828125, 8852.556640625, 12572.5966796875]
 
-print(now())
+rootnet = Rootnet(rootnet_model)
+root_depth = rootnet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list)
+print(root_depth)
+print(root_depth_list)
+
 posenet = Posenet(posenet_model)
-print(now())
 poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
-print(now())
 poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
-print(now())
 
 poses = []
 

@@ -27,7 +27,7 @@ class Posenet():
         cudnn.benchmark = True
 
         assert osp.exists(model_path), 'Cannot find model at ' + model_path
-        print(f'Load model {model_path}')
+        print(f'Loading Posenet model {model_path}')
         self.model = DataParallel(get_pose_net(cfg, False, joint_num)).cuda()
         ckpt = torch.load(model_path)
         self.model.load_state_dict(ckpt['network'])
@@ -53,7 +53,7 @@ class Posenet():
         output_pose_3d_list = []
         for n in range(person_num):
             bbox = process_bbox(np.array(bbox_list[n]), original_img_width, original_img_height)
-            img, img2bb_trans = generate_patch_image(original_img, bbox, False, 1.0, 0.0, False) 
+            img, img2bb_trans = generate_patch_image(original_img, bbox, False, 1.0, 0.0, False)
             img = transform(img).cuda()[None,:,:,:]
 
             # forward
