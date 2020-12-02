@@ -38,7 +38,6 @@ class Posenet():
 
         # prepare input image
         transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=cfg.pixel_mean, std=cfg.pixel_std)])
-        img_path = 'input.jpg'
         original_img = cv2.imread(img_path)
         original_img_height, original_img_width = original_img.shape[:2]
 
