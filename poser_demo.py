@@ -29,7 +29,7 @@ print(now())
 
 poses = []
 
-for pose in pose_3d:
+for pose in poses_3d:
     # print(pose)
     keypoints = []
     for i, joint in enumerate(pose):
