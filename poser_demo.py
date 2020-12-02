@@ -8,6 +8,11 @@ joints_name2 = ('Head_top', 'Thorax', 'rightShoulder', 'rightElbow', 'rightWrist
 def now():
     return datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 
+@singledispatch
+def to_serializable(val):
+    """Used by default."""
+    return str(val)
+
 posenet_model = '/content/drive/My Drive/Raven/3DMPPE/snapshot_24.pth.tar'
 rootnet_model = '/content/drive/My Drive/Raven/3DMPPE/snapshot_18.pth.tar'
 
@@ -59,4 +64,4 @@ for pose in poses_3d:
 
     poses.append({'score': 1, 'keypoints': keypoints})
 
-print(json.dumps({'timestamp': 0, 'poses': poses }))
+print(json.dumps({'timestamp': 0, 'poses': poses }, default=to_serializable))
