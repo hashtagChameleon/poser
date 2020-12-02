@@ -9,14 +9,14 @@ import torchvision.transforms as transforms
 from torch.nn.parallel.data_parallel import DataParallel
 import torch.backends.cudnn as cudnn
 
-sys.path.insert(0, osp.join('3DMPPE_POSENET_RELEASE', 'main'))
-sys.path.insert(0, osp.join('3DMPPE_POSENET_RELEASE', 'data'))
-sys.path.insert(0, osp.join('3DMPPE_POSENET_RELEASE', 'common'))
-from config import cfg
-from model import get_pose_net
-from dataset import generate_patch_image
-from utils.pose_utils import process_bbox, pixel2cam
-from utils.vis import vis_keypoints, vis_3d_multiple_skeleton
+# sys.path.insert(0, osp.join('3DMPPE_POSENET_RELEASE', 'main'))
+# sys.path.insert(0, osp.join('3DMPPE_POSENET_RELEASE', 'data'))
+# sys.path.insert(0, osp.join('3DMPPE_POSENET_RELEASE', 'common'))
+from 3DMPPE_POSENET_RELEASE.main.config import cfg
+from 3DMPPE_POSENET_RELEASE.main.model import get_pose_net
+from 3DMPPE_POSENET_RELEASE.data.dataset import generate_patch_image
+from 3DMPPE_POSENET_RELEASE.common.utils.pose_utils import process_bbox, pixel2cam
+from 3DMPPE_POSENET_RELEASE.common.utils.vis import vis_keypoints, vis_3d_multiple_skeleton
 
 joint_num = 21
 model = None
