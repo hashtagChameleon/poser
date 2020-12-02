@@ -1,0 +1,9 @@
+[submodule "3DMPPE_POSENET_RELEASE"]
+	path = 3DMPPE_POSENET_RELEASE
+	url = https://github.com/hashtagChameleon/3DMPPE_POSENET_RELEASE.git
+[submodule "3DMPPE_ROOTNET_RELEASE"]
+	path = 3DMPPE_ROOTNET_RELEASE
+	url = https://github.com/hashtagChameleon/3DMPPE_ROOTNET_RELEASE
+[submodule "Detectron"]
+	path = Detectron
+	url = https://github.com/hashtagChameleon/Detectron.git
