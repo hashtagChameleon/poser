@@ -10,9 +10,9 @@ import torchvision.transforms as transforms
 from torch.nn.parallel.data_parallel import DataParallel
 import torch.backends.cudnn as cudnn
 
-sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'main'))
-sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'data'))
-sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'common'))
+sys.path.insert(0, osp.join('ROOTNET_RELEASE', 'main'))
+sys.path.insert(0, osp.join('ROOTNET_RELEASE', 'data'))
+sys.path.insert(0, osp.join('ROOTNET_RELEASE', 'common'))
 from config import cfg
 from model import get_pose_net
 from utils.pose_utils import process_bbox
