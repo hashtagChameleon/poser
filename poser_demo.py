@@ -3,7 +3,7 @@ import json
 from functools import singledispatch
 from datetime import datetime
 
-from posenet_demo import Posenet
+# from posenet_demo import Posenet
 from rootnet_demo import Rootnet
 
 joints_name2 = ('Head_top', 'Thorax', 'rightShoulder', 'rightElbow', 'rightWrist', 'leftShoulder', 'leftElbow', 'leftWrist', 'rightHip', 'rightKnee', 'rightAnkle', 'leftHip', 'leftKnee', 'leftAnkle', 'Pelvis', 'Spine', 'nose', 'R_Hand', 'L_Hand', 'R_Toe', 'L_Toe')
@@ -32,40 +32,40 @@ root_depth = rootnet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox
 print(root_depth)
 print(root_depth_list)
 
-posenet = Posenet(posenet_model)
-poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
-poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
+# posenet = Posenet(posenet_model)
+# poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
+# poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
 
-poses = []
+# poses = []
 
-for pose in poses_3d:
-    # print(pose)
-    keypoints = []
-    for i, joint in enumerate(pose):
-        keypoint = {
-            'score': 1,
-            'part': joints_name2[i],
-            'position' : {
-                'x': joint[0],
-                'y': joint[1],
-                'z': joint[2],
-            }
-        }
-        keypoints.append(keypoint)
-        if joints_name2[i] == 'nose':
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'leftEye'
-            keypoints.append(keypoint)
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'rightEye'
-            keypoints.append(keypoint)
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'leftEar'
-            keypoints.append(keypoint)
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'rightEar'
-            keypoints.append(keypoint)
+# for pose in poses_3d:
+    # # print(pose)
+    # keypoints = []
+    # for i, joint in enumerate(pose):
+        # keypoint = {
+            # 'score': 1,
+            # 'part': joints_name2[i],
+            # 'position' : {
+                # 'x': joint[0],
+                # 'y': joint[1],
+                # 'z': joint[2],
+            # }
+        # }
+        # keypoints.append(keypoint)
+        # if joints_name2[i] == 'nose':
+            # keypoint = keypoint.copy()
+            # keypoint['part'] = 'leftEye'
+            # keypoints.append(keypoint)
+            # keypoint = keypoint.copy()
+            # keypoint['part'] = 'rightEye'
+            # keypoints.append(keypoint)
+            # keypoint = keypoint.copy()
+            # keypoint['part'] = 'leftEar'
+            # keypoints.append(keypoint)
+            # keypoint = keypoint.copy()
+            # keypoint['part'] = 'rightEar'
+            # keypoints.append(keypoint)
 
-    poses.append({'score': 1, 'keypoints': keypoints})
+    # poses.append({'score': 1, 'keypoints': keypoints})
 
-print(json.dumps({'timestamp': 0, 'poses': poses }, default=to_serializable))
+# print(json.dumps({'timestamp': 0, 'poses': poses }, default=to_serializable))
