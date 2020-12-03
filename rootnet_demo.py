@@ -16,7 +16,7 @@ sys.path.insert(0, osp.join('ROOTNET_RELEASE', 'data'))
 sys.path.insert(0, osp.join('ROOTNET_RELEASE', 'common'))
 print(f'rootnet: {sys.path}')
 from config import cfg
-from model import get_pose_net as get_pose_net_rootnet
+from model import get_pose_net as get_pose_net_r
 from utils.pose_utils import process_bbox
 from dataset import generate_patch_image
 sys.path = sys.path[5:] # revert sys path to prevent colision with rootnet
@@ -29,7 +29,7 @@ class Rootnet():
 
         assert osp.exists(model_path), 'Cannot find model at ' + model_path
         print(f'Loading Rootnet model {model_path}')
-        self.model = DataParallel(get_pose_net_rootnet(cfg, False)).cuda()
+        self.model = DataParallel(get_pose_net_r(cfg, False)).cuda()
         ckpt = torch.load(model_path)
         self.model.load_state_dict(ckpt['network'])
         self.model.eval()
