@@ -15,7 +15,7 @@ sys.path.insert(0, osp.join('POSENET_RELEASE', 'data'))
 sys.path.insert(0, osp.join('POSENET_RELEASE', 'common'))
 print(f'posenet: {sys.path}')
 from config import cfg
-from model import get_pose_net as get_pose_net_p
+from model import get_pose_net
 from dataset import generate_patch_image
 from utils.pose_utils import process_bbox, pixel2cam
 from utils.vis import vis_keypoints, vis_3d_multiple_skeleton
@@ -32,7 +32,7 @@ class Posenet():
 
         assert osp.exists(model_path), 'Cannot find model at ' + model_path
         print(f'Loading Posenet model {model_path}')
-        self.model = DataParallel(get_pose_net_p(cfg, False, joint_num)).cuda()
+        self.model = DataParallel(get_pose_net(cfg, False, joint_num)).cuda()
         ckpt = torch.load(model_path)
         self.model.load_state_dict(ckpt['network'])
         self.model.eval()
