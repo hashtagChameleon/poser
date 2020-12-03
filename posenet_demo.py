@@ -19,7 +19,7 @@ from model import get_pose_net
 from dataset import generate_patch_image
 from utils.pose_utils import process_bbox, pixel2cam
 from utils.vis import vis_keypoints, vis_3d_multiple_skeleton
-sys.path = sys.path[3:] # revert sys path to prevent colision with rootnet
+sys.path = sys.path[7:] # revert sys path to prevent colision with rootnet
 print(f'posenet: {sys.path}')
 
 joint_num = 21
