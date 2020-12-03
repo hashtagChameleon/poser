@@ -10,13 +10,14 @@ import torchvision.transforms as transforms
 from torch.nn.parallel.data_parallel import DataParallel
 import torch.backends.cudnn as cudnn
 
-# sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'main'))
-# sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'data'))
-# sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'common'))
-from 3DMPPE_ROOTNET_RELEASE.main.config import cfg
-from 3DMPPE_ROOTNET_RELEASE.main.model import get_pose_net
-from 3DMPPE_ROOTNET_RELEASE.data.dataset import generate_patch_image
-from 3DMPPE_ROOTNET_RELEASE.common.utils.pose_utils import process_bbox
+sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'main'))
+sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'data'))
+sys.path.insert(0, osp.join('3DMPPE_ROOTNET_RELEASE', 'common'))
+from config import cfg
+from model import get_pose_net
+from utils.pose_utils import process_bbox
+from dataset import generate_patch_image
+sys.path = sys.path[3:] # revert sys path to prevent colision with rootnet
 
 class Rootnet():
     def __init__(self, model_path, gpu_ids = '0'):
