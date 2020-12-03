@@ -28,13 +28,13 @@ bbox_list = [
 root_depth_list = [11250.5732421875, 15522.8701171875, 11831.3828125, 8852.556640625, 12572.5966796875]
 
 rootnet = Rootnet(rootnet_model)
-root_depth = rootnet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list)
+root_depth = rootnet.process_image('POSENET_RELEASE/demo/input.jpg', bbox_list)
 print(root_depth)
 print(root_depth_list)
 
 # posenet = Posenet(posenet_model)
-# poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
-# poses_3d = posenet.process_image('3DMPPE_POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
+# poses_3d = posenet.process_image('POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
+# poses_3d = posenet.process_image('POSENET_RELEASE/demo/input.jpg', bbox_list, root_depth_list)
 
 # poses = []
 
