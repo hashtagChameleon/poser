@@ -16,7 +16,7 @@ sys.path.insert(0, osp.join('ROOTNET_RELEASE', 'data'))
 sys.path.insert(0, osp.join('ROOTNET_RELEASE', 'common'))
 print(f'rootnet: {sys.path}')
 from config import cfg
-from model import get_pose_net_rootnet
+from model import get_pose_net as get_pose_net_rootnet
 from utils.pose_utils import process_bbox
 from dataset import generate_patch_image
 sys.path = sys.path[5:] # revert sys path to prevent colision with rootnet
