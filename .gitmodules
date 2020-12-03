@@ -1,3 +1,9 @@
 [submodule "Detectron"]
 	path = Detectron
 	url = https://github.com/hashtagChameleon/Detectron.git
+[submodule "POSENET_RELEASE"]
+	path = POSENET_RELEASE
+	url = https://github.com/hashtagChameleon/3DMPPE_POSENET_RELEASE.git
+[submodule "ROOTNET_RELEASE"]
+	path = ROOTNET_RELEASE
+	url = https://github.com/hashtagChameleon/3DMPPE_ROOTNET_RELEASE.git
