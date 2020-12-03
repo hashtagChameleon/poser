@@ -9,15 +9,18 @@ import torchvision.transforms as transforms
 from torch.nn.parallel.data_parallel import DataParallel
 import torch.backends.cudnn as cudnn
 
+print(f'posenet: {sys.path')
 sys.path.insert(0, osp.join('POSENET_RELEASE', 'main'))
 sys.path.insert(0, osp.join('POSENET_RELEASE', 'data'))
 sys.path.insert(0, osp.join('POSENET_RELEASE', 'common'))
+print(f'posenet: {sys.path')
 from config import cfg
 from model import get_pose_net
 from dataset import generate_patch_image
 from utils.pose_utils import process_bbox, pixel2cam
 from utils.vis import vis_keypoints, vis_3d_multiple_skeleton
 sys.path = sys.path[3:] # revert sys path to prevent colision with rootnet
+print(f'posenet: {sys.path')
 
 joint_num = 21
 model = None
