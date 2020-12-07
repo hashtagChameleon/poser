@@ -28,45 +28,44 @@ bbox_list = [
 # root_depth_list = [11250.5732421875, 15522.8701171875, 11831.3828125, 8852.556640625, 12572.5966796875]
 root_depth_list = [10883.888, 15571.881, 11532.37, 8677.501, 12364.761]
 
-# rootnet = Rootnet(rootnet_model)
-# root_depth = rootnet.process_image('/home/levishai_g/models/input.jpg', bbox_list)
-# print(root_depth)
-# print(root_depth_list)
+ rootnet = Rootnet(rootnet_model)
+ root_depth = rootnet.process_image('/home/levishai_g/models/input.jpg', bbox_list)
+ print(root_depth)
+ print(root_depth_list)
 
-posenet = Posenet(posenet_model)
-poses_3d = posenet.process_image('/home/levishai_g/models/input.jpg', bbox_list, root_depth_list)
-poses_3d = posenet.process_image('/home/levishai_g/models/input.jpg', bbox_list, root_depth_list)
+#posenet = Posenet(posenet_model)
+#poses_3d = posenet.process_image('/home/levishai_g/models/input.jpg', bbox_list, root_depth_list)
 
-poses = []
+#poses = []
 
-for pose in poses_3d:
-    # print(pose)
-    keypoints = []
-    for i, joint in enumerate(pose):
-        keypoint = {
-            'score': 1,
-            'part': joints_name2[i],
-            'position' : {
-                'x': joint[0],
-                'y': joint[1],
-                'z': joint[2],
-            }
-        }
-        keypoints.append(keypoint)
-        if joints_name2[i] == 'nose':
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'leftEye'
-            keypoints.append(keypoint)
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'rightEye'
-            keypoints.append(keypoint)
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'leftEar'
-            keypoints.append(keypoint)
-            keypoint = keypoint.copy()
-            keypoint['part'] = 'rightEar'
-            keypoints.append(keypoint)
+#for pose in poses_3d:
+#    # print(pose)
+#    keypoints = []
+#    for i, joint in enumerate(pose):
+#        keypoint = {
+#            'score': 1,
+#            'part': joints_name2[i],
+#            'position' : {
+#                'x': joint[0],
+#                'y': joint[1],
+#                'z': joint[2],
+#            }
+#        }
+#        keypoints.append(keypoint)
+#        if joints_name2[i] == 'nose':
+#            keypoint = keypoint.copy()
+#            keypoint['part'] = 'leftEye'
+#            keypoints.append(keypoint)
+#            keypoint = keypoint.copy()
+#            keypoint['part'] = 'rightEye'
+#            keypoints.append(keypoint)
+#            keypoint = keypoint.copy()
+#            keypoint['part'] = 'leftEar'
+#            keypoints.append(keypoint)
+#            keypoint = keypoint.copy()
+#            keypoint['part'] = 'rightEar'
+#            keypoints.append(keypoint)
 
-    poses.append({'score': 1, 'keypoints': keypoints})
+#   poses.append({'score': 1, 'keypoints': keypoints})
 
-print(json.dumps({'timestamp': 0, 'poses': poses }, default=to_serializable))
+#print(json.dumps({'timestamp': 0, 'poses': poses }, default=to_serializable))
