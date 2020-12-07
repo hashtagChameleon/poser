@@ -3,8 +3,8 @@ import json
 from functools import singledispatch
 from datetime import datetime
 
-from posenet_demo import Posenet
-# from rootnet_demo import Rootnet
+#from posenet_demo import Posenet
+from rootnet_demo import Rootnet
 
 joints_name2 = ('Head_top', 'Thorax', 'rightShoulder', 'rightElbow', 'rightWrist', 'leftShoulder', 'leftElbow', 'leftWrist', 'rightHip', 'rightKnee', 'rightAnkle', 'leftHip', 'leftKnee', 'leftAnkle', 'Pelvis', 'Spine', 'nose', 'R_Hand', 'L_Hand', 'R_Toe', 'L_Toe')
 
