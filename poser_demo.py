@@ -30,7 +30,6 @@ bbox_list = [
 [365.950439453125, 170.007080078125, 270.9305419921875, 219.5510864257812],\
 [0.7226638793945312, 44.89130401611328, 85.53158569335938, 221.61691284179688]]
 
-print(type(pickle.dumps(image, protocol=0)))
 rootnet_data = {
         'bbox_list': bbox_list,
         'image' : codecs.encode(pickle.dumps(image), "base64").decode() # protocol 0 is printable ASCII

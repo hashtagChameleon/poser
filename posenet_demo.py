@@ -34,6 +34,7 @@ class Posenet():
         ckpt = torch.load(model_path)
         self.model.load_state_dict(ckpt['network'])
         self.model.eval()
+        print(f'Model loaded succesfully')
 
     def process_image(self, original_img, bbox_list, root_depth_list):
         assert len(bbox_list) == len(root_depth_list)
@@ -47,8 +48,8 @@ class Posenet():
         # normalized camera intrinsics
         focal = [1500, 1500] # x-axis, y-axis
         princpt = [original_img_width/2, original_img_height/2] # x-axis, y-axis
-        print('focal length: (' + str(focal[0]) + ', ' + str(focal[1]) + ')')
-        print('principal points: (' + str(princpt[0]) + ', ' + str(princpt[1]) + ')')
+        # print('focal length: (' + str(focal[0]) + ', ' + str(focal[1]) + ')')
+        # print('principal points: (' + str(princpt[0]) + ', ' + str(princpt[1]) + ')')
 
         # for each cropped and resized human image, forward it to PoseNet
         output_pose_3d_list = []
