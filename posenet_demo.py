@@ -9,24 +9,22 @@ import torchvision.transforms as transforms
 from torch.nn.parallel.data_parallel import DataParallel
 import torch.backends.cudnn as cudnn
 
-print(f'posenet: {sys.path}')
 sys.path.insert(0, osp.join('POSENET_RELEASE', 'main'))
 sys.path.insert(0, osp.join('POSENET_RELEASE', 'data'))
 sys.path.insert(0, osp.join('POSENET_RELEASE', 'common'))
-print(f'posenet: {sys.path}')
 from config import cfg
 from model import get_pose_net
 from dataset import generate_patch_image
 from utils.pose_utils import process_bbox, pixel2cam
 from utils.vis import vis_keypoints, vis_3d_multiple_skeleton
-sys.path = sys.path[7:] # revert sys path to prevent colision with rootnet
-print(f'posenet: {sys.path}')
+
+model_path = '/home/levishai_g/pose_estimation/models/snapshot_24.pth.tar'
 
 joint_num = 21
 model = None
 
 class Posenet():
-    def __init__(self, model_path, gpu_ids = '0'):
+    def __init__(self, model_path = model_path, gpu_ids = '0'):
         cfg.set_args(gpu_ids)
         cudnn.benchmark = True
 
@@ -37,12 +35,11 @@ class Posenet():
         self.model.load_state_dict(ckpt['network'])
         self.model.eval()
 
-    def process_image(self, img_path, bbox_list, root_depth_list):
+    def process_image(self, original_img, bbox_list, root_depth_list):
         assert len(bbox_list) == len(root_depth_list)
 
         # prepare input image
         transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=cfg.pixel_mean, std=cfg.pixel_std)])
-        original_img = cv2.imread(img_path)
         original_img_height, original_img_width = original_img.shape[:2]
 
         person_num = len(bbox_list)
